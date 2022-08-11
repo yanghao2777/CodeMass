@@ -1,0 +1,166 @@
+{
+  "folders": [
+    {
+      "id": "bQciZ7Fm",
+      "name": "Default",
+      "defaultLanguage": "typescript",
+      "parentId": null,
+      "isOpen": false,
+      "isSystem": false,
+      "createdAt": 1660105245210,
+      "updatedAt": 1660105245210
+    }
+  ],
+  "snippets": [
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "",
+      "tagsIds": [],
+      "description": null,
+      "name": "OkHttp+Retrofit+Api",
+      "content": [
+        {
+          "label": "Base",
+          "language": "java",
+          "value": "        Retrofit retrofit = new Retrofit.Builder().baseUrl(\"http://ip-api.com/\")\n                .client(new OkHttpClient.Builder()\n                        .proxy(Proxy.NO_PROXY)\n                        .addInterceptor(chain -> {\n                            Request request = chain.request();\n                            Request newRequest = request.newBuilder()\n                                    .cacheControl(CacheControl.FORCE_NETWORK)\n                                    .build();\n                            return chain.proceed(newRequest);\n                        })\n                        .callTimeout(10, TimeUnit.SECONDS)\n                        .connectTimeout(10, TimeUnit.SECONDS)\n                        .build())\n                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))\n                .build();\n         ConfigService configService = retrofit.create(ConfigService.class);\n         \n\tprivate interface ConfigService {\n        @GET(\"json\")\n        Call<ApiBean> getApiBean();\n    }\n"
+        },
+        {
+          "label": "ApiBean",
+          "language": "java",
+          "value": "import androidx.annotation.Keep;\n\n@Keep\npublic class CBCApiBean {\n\n    private String status;\n    private String country;\n    private String countryCode;\n    private String region;\n    private String regionName;\n    private String city;\n    private String zip;\n    private Double lat;\n    private Double lon;\n    private String timezone;\n    private String isp;\n    private String org;\n    private String as;\n    private String query;\n\n    public String getStatus() {\n        return status;\n    }\n\n    public void setStatus(String status) {\n        this.status = status;\n    }\n\n    public String getCountry() {\n        return country;\n    }\n\n    public void setCountry(String country) {\n        this.country = country;\n    }\n\n    public String getCountryCode() {\n        return countryCode;\n    }\n\n    public void setCountryCode(String countryCode) {\n        this.countryCode = countryCode;\n    }\n\n    public String getRegion() {\n        return region;\n    }\n\n    public void setRegion(String region) {\n        this.region = region;\n    }\n\n    public String getRegionName() {\n        return regionName;\n    }\n\n    public void setRegionName(String regionName) {\n        this.regionName = regionName;\n    }\n\n    public String getCity() {\n        return city;\n    }\n\n    public void setCity(String city) {\n        this.city = city;\n    }\n\n    public String getZip() {\n        return zip;\n    }\n\n    public void setZip(String zip) {\n        this.zip = zip;\n    }\n\n    public Double getLat() {\n        return lat;\n    }\n\n    public void setLat(Double lat) {\n        this.lat = lat;\n    }\n\n    public Double getLon() {\n        return lon;\n    }\n\n    public void setLon(Double lon) {\n        this.lon = lon;\n    }\n\n    public String getTimezone() {\n        return timezone;\n    }\n\n    public void setTimezone(String timezone) {\n        this.timezone = timezone;\n    }\n\n    public String getIsp() {\n        return isp;\n    }\n\n    public void setIsp(String isp) {\n        this.isp = isp;\n    }\n\n    public String getOrg() {\n        return org;\n    }\n\n    public void setOrg(String org) {\n        this.org = org;\n    }\n\n    public String getAs() {\n        return as;\n    }\n\n    public void setAs(String as) {\n        this.as = as;\n    }\n\n    public String getQuery() {\n        return query;\n    }\n\n    public void setQuery(String query) {\n        this.query = query;\n    }\n}\n"
+        }
+      ],
+      "id": "-ZCGW8pS",
+      "createdAt": 1660105278164,
+      "updatedAt": 1660114138071
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "",
+      "tagsIds": [],
+      "description": null,
+      "name": "Open GooglePlay",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": "    public void gotoGooglePlay(Context context, String packageName) {\n        if (TextUtils.isEmpty(packageName)) return;\n        try {\n            Intent launchIntent = new Intent(Intent.ACTION_VIEW);\n            launchIntent.setPackage(\"com.android.vending\");\n            launchIntent.setData(Uri.parse(\"market://details?id=\" + packageName));\n            launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);\n            context.startActivity(launchIntent);\n        } catch (ActivityNotFoundException ee) {\n            try {\n                Intent launchIntent = new Intent(Intent.ACTION_VIEW,\n                        Uri.parse(\"https://play.google.com/store/apps/details?id=\" + packageName));\n                launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);\n\n                context.startActivity(launchIntent);\n            } catch (Throwable e) {\n                e.printStackTrace();\n            }\n        }\n    }\n    \n"
+        }
+      ],
+      "id": "wwF-HqC8",
+      "createdAt": 1660111920820,
+      "updatedAt": 1660114129887
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "",
+      "tagsIds": [],
+      "description": null,
+      "name": "Open Browser",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": "    public void openBrowser(String url) {\n        Intent intent = new Intent();\n        intent.setAction(\"android.intent.action.VIEW\");\n        Uri content_url = Uri.parse(url);\n        intent.setData(content_url);\n        startActivity(intent);\n    }"
+        }
+      ],
+      "id": "uRVjTMys",
+      "createdAt": 1660112020281,
+      "updatedAt": 1660112431030
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "",
+      "tagsIds": [],
+      "description": null,
+      "name": "Save2Album",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": "\n    public static Uri save2Album(Bitmap bitmap) {\n        String fileName = \"PixoCut-\" + System.currentTimeMillis() + \".png\";\n        return save2Album(bitmap,fileName);\n    }\n    \n\tprivate static Uri save2Album(Bitmap bitmap,String fileName) {\n        String imageMediaPath;\n        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {\n            imageMediaPath = new File(Environment.getExternalStoragePublicDirectory(\n                    Environment.DIRECTORY_PICTURES), \"PixoCut\").getPath();\n            if(!FileUtils.isFileExists(imageMediaPath)) {\n                FileUtils.createOrExistsDir(imageMediaPath);\n            }\n            File destFile = new File(imageMediaPath, fileName);\n\n            OutputStream os = null;\n            try {\n                os = new FileOutputStream(destFile);\n                boolean result = bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);\n                if(!result) return null;\n            } catch (IOException e) {\n                e.printStackTrace();\n                return null;\n            } finally {\n                try {\n                    if (os != null) {\n                        os.close();\n                    }\n                } catch (IOException e) {\n                    e.printStackTrace();\n                }\n            }\n\n            FileUtils.notifySystemToScan(destFile);\n            return UriUtils.file2Uri(destFile);\n        }else{\n            imageMediaPath = Environment.DIRECTORY_PICTURES + \"/PixoCut\";\n            ContentValues values = new ContentValues();\n            values.put(MediaStore.Images.Media.DISPLAY_NAME, fileName);\n            values.put(MediaStore.Images.Media.MIME_TYPE, \"image/png\");\n            values.put(MediaStore.Images.Media.RELATIVE_PATH, imageMediaPath);\n            Uri external = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;\n            Uri insertUri = PixoCutApp.getAppContext().getContentResolver().insert(external, values);\n            OutputStream os = null;\n            try {\n                if (insertUri != null) {\n                    os = PixoCutApp.getAppContext().getContentResolver().openOutputStream(insertUri);\n                }\n                if (os != null) {\n                    boolean result = bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);\n                    if(!result) return null;\n                    else return insertUri;\n                }else{\n                    return null;\n                }\n            } catch (IOException e) {\n                e.printStackTrace();\n                return null;\n            } finally {\n                try {\n                    if(os != null) {\n                        os.close();\n                    }\n                } catch (IOException e) {\n                    e.printStackTrace();\n                }\n            }\n        }\n    }\n"
+        }
+      ],
+      "id": "uEgYwR-h",
+      "createdAt": 1660114179003,
+      "updatedAt": 1660115142696
+    },
+    {
+      "isDeleted": true,
+      "isFavorites": false,
+      "folderId": "",
+      "tagsIds": [],
+      "description": null,
+      "name": "Untitled snippet",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": ""
+        }
+      ],
+      "id": "w6V7Mg9a",
+      "createdAt": 1660115150950,
+      "updatedAt": 1660115167396
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "",
+      "tagsIds": [],
+      "description": null,
+      "name": "BitmapUtil",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": "    public static Bitmap flipBitmap(boolean isV, Bitmap bitmap) {\n        if(bitmap == null) return null;\n        int w = bitmap.getWidth();\n        int h = bitmap.getHeight();\n        Bitmap newB = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);\n        Canvas cv = new Canvas(newB);\n        Matrix m = new Matrix();\n        if (isV) {\n            m.postScale(1, -1);   //镜像垂直翻转\n        } else {\n            m.postScale(-1, 1);   //镜像水平翻转\n        }\n\n        Bitmap new2 = Bitmap.createBitmap(bitmap, 0, 0, w, h, m, true);\n        cv.drawBitmap(new2, new Rect(0, 0, new2.getWidth(), new2.getHeight()),\n                new Rect(0, 0, w, h), null);\n        return newB;\n    }\n    \n    public static Bitmap coverBitmapByUri(Context context, String uriStr) {\n        return coverBitmapByUri(context,uriStr,1920);\n    }\n\n    public static Bitmap coverBitmapByUri(Context context, String uriStr,int maxSize) {\n        Bitmap result = null;\n\n        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {\n            ParcelFileDescriptor pfd = null;\n\n            try {\n                Uri uri = Uri.parse(uriStr);\n                pfd = context.getContentResolver().openFileDescriptor(uri, \"r\");\n                if (pfd != null) {\n                    result = getBitmap(pfd.getFileDescriptor(),maxSize,maxSize);\n                }\n            } catch (IOException e) {\n                e.printStackTrace();\n            } finally {\n                try{\n                    if(pfd != null) pfd.close();\n                }catch (Exception e1) {\n                    e1.printStackTrace();\n                }\n            }\n        }else{\n            result = ImageUtils.getBitmap(uriStr,maxSize,maxSize);\n        }\n        if(result == null) return null;\n\n        int fixDegree = getPictureFixDegree(context,uriStr);\n        if(fixDegree != 0) {\n            return ImageUtils.rotate(result,fixDegree,\n                    result.getWidth() / 2f,result.getHeight() / 2f,true);\n        }\n        return result;\n    }\n\n    private static Bitmap getBitmap(FileDescriptor fd,int maxWidth,int maxHeight) {\n        BitmapFactory.Options options = new BitmapFactory.Options();\n        options.inJustDecodeBounds = true;\n        BitmapFactory.decodeFileDescriptor(fd,null,options);\n        int height = options.outHeight;\n        int width = options.outWidth;\n        int inSampleSize = 1;\n        while (height > maxHeight || width > maxWidth) {\n            height >>= 1;\n            width >>= 1;\n            inSampleSize <<= 1;\n        }\n        options.inSampleSize = inSampleSize;\n        options.inJustDecodeBounds = false;\n        return BitmapFactory.decodeFileDescriptor(fd, null,options);\n    }\n    \n        public static int getPictureFixDegree(Context context,String uriStr) {\n        if (TextUtils.isEmpty(uriStr)) {\n            return 0;\n        }\n        int degree = 0;\n        ExifInterface exifInterface = null;\n        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {\n            ParcelFileDescriptor pfd = null;\n            try {\n                Uri uri = Uri.parse(uriStr);\n                pfd = context.getContentResolver().openFileDescriptor(uri, \"r\");\n                if (pfd != null) {\n                    exifInterface = new ExifInterface(pfd.getFileDescriptor());\n                }\n            } catch (IOException e) {\n                e.printStackTrace();\n            } finally {\n                try{\n                    if(pfd != null) pfd.close();\n                }catch (Exception e1) {\n                    e1.printStackTrace();\n                }\n            }\n        }else{\n            try {\n                exifInterface = new ExifInterface(uriStr);\n            } catch (IOException e) {\n                e.printStackTrace();\n            }\n        }\n        if(exifInterface == null) return 0;\n\n        int orientation = exifInterface.getAttributeInt(\n                ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);\n        switch (orientation) {\n            case ExifInterface.ORIENTATION_ROTATE_90:\n                degree = 90;\n                break;\n            case ExifInterface.ORIENTATION_ROTATE_180:\n                degree = 180;\n                break;\n            case ExifInterface.ORIENTATION_ROTATE_270:\n                degree = 270;\n                break;\n        }\n\n        return degree;\n    }"
+        }
+      ],
+      "id": "44NRPrjl",
+      "createdAt": 1660115159429,
+      "updatedAt": 1660191567037
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "",
+      "tagsIds": [],
+      "description": null,
+      "name": "Gradle",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": "buildscript {\n    repositories {\n        maven { url 'https://maven.aliyun.com/repository/public' }\n        maven { url 'https://maven.aliyun.com/repository/google' }\n\n        google()\n        mavenCentral()\n        jcenter()\n\n        maven { url 'https://jitpack.io' }\n\n        maven { url 'https://repo1.maven.org/maven2/' }\n    }\n    dependencies {\n        classpath \"com.android.tools.build:gradle:7.0.3\"\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20\"\n\n        //string fog\n        classpath 'com.github.megatronking.stringfog:gradle-plugin:2.2.1'\n        classpath 'com.github.megatronking.stringfog:xor:1.1.0'\n\n        // app lovin\n        classpath \"com.applovin.quality:AppLovinQualityServiceGradlePlugin:3.9.11\"\n\n        //google service\n        classpath \"com.google.gms:google-services:4.3.10\"\n\n    }\n}\n\n\n\nplugins {\n    id 'com.android.application'\n    id 'kotlin-android'\n    id 'stringfog'\n}\n\nstringfog {\n    key ''\n    enable true\n    implementation 'com.github.megatronking.stringfog.xor.StringFogImpl'\n}\n\nandroid {\n    compileSdk 32\n\n    android.buildFeatures.viewBinding = true\n\n    defaultConfig {\n        minSdk 21\n        targetSdk 32\n\n        flavorDimensions \"default\"\n\n        ndk {\n            // add support lib\n            abiFilters  'arm64-v8a','armeabi-v7a'//, \"mips\" //, 'armeabi' 'x86'//, 'x86_64'\n        }\n    }\n    sourceSets {\n        main {\n            jni.srcDirs = []\n            main.jniLibs.srcDirs = ['libs']\n        }\n    }\n    signingConfigs {\n        release {\n            storeFile file(\".jks\")\n            storePassword \"\"\n            keyAlias \"\"\n            keyPassword \"\"\n        }\n    }\n    \n    buildTypes {\n        release {\n            minifyEnabled true\n            shrinkResources true\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-common-rules.pro',\n                    'proguard-library-rules.pro','proguard-pixo-rules.pro'\n        }\n        debug {\n            minifyEnabled true\n            shrinkResources true\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-common-rules.pro',\n                    'proguard-library-rules.pro','proguard-pixo-rules.pro'\n        }\n\n        if (isBundleRelease()) {\n            println(\"bundle release apply\")\n\n            apply plugin: 'com.google.gms.google-services'\n            apply plugin: 'applovin-quality-service'\n            applovin {\n                apiKey \"iqDQ4XkBMEyaR_RP1VirnEN7vow7xTOpMH6mq5vEh2gwRS6fkQ-R47mNwAPmHqTEWmTiHpO_nCnKB_fmUkW9vF\"\n            }\n        }\n    }\n\n    productFlavors{\n        dev{\n            dimension \"default\"\n            applicationId \"abc.com.pixo.cut\"\n            versionCode 999\n            versionName \"9.9.9\"\n            buildConfigField 'String', 'APP_LOVIN_ID', '\"8my_NW8_1NDOzZI-bIUlfpm6xi_ebXl69R1nxKqW_xDFuU77VkWPBOM3iaTc4voPTchwuuce56n4wfCs-1VhGe\"'\n\n            buildConfigField 'String', 'UM_KEY', '\"u_meng_key\"'\n            buildConfigField 'String', 'BUGLY_KEY', '\"f098502e20\"'\n            resValue \"string\", \"facebook_id\", \"your_facebook_id\"\n            resValue \"string\", \"fb_facebook_id\", \"fb_your_facebook_id\"\n        }\n\n        google{\n            dimension \"default\"\n            applicationId \"com.photo.editor.pixocut\"\n            versionCode 123\n            versionName \"1.2.3\"\n            buildConfigField 'String', 'APP_LOVIN_ID', '\"wBoUPtps7bLwU5xddHu9qMTzdsScLZ3MI9EwyECTk0ZLxKMBVdpTTPBosSTFDrbuzxb3-4CmK5Fo-QR8DNl-15\"'\n\n            buildConfigField 'String', 'UM_KEY', '\"61cda6bde0f9bb492bb34335\"'\n            buildConfigField 'String', 'BUGLY_KEY', '\"28d8901341\"'\n            resValue \"string\", \"facebook_id\", \"4842051089189348\"\n            resValue \"string\", \"fb_facebook_id\", \"fb4842051089189348\"\n        }\n    }\n\n\n    compileOptions {\n        sourceCompatibility JavaVersion.VERSION_1_8\n        targetCompatibility JavaVersion.VERSION_1_8\n    }\n    kotlinOptions {\n        jvmTarget = '1.8'\n    }\n}\n\ndef isBundleRelease() {\n    String tskReqStr = getGradle().getStartParameter().getTaskRequests().toString()\n\n    if(tskReqStr.contains(\"bundle\") && tskReqStr.contains(\"Release\"))\n        return true\n\n    return false\n}\n\ndependencies {\n\t...\n}"
+        }
+      ],
+      "id": "VRqg3RBo",
+      "createdAt": 1660115237007,
+      "updatedAt": 1660115400069
+    },
+    {
+      "isDeleted": true,
+      "isFavorites": false,
+      "folderId": "",
+      "tagsIds": [],
+      "description": null,
+      "name": "Untitled snippet",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": ""
+        }
+      ],
+      "id": "ooFKYYGd",
+      "createdAt": 1660192231947,
+      "updatedAt": 1660192235674
+    }
+  ],
+  "tags": []
+}
