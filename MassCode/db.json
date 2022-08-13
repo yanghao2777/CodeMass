@@ -160,6 +160,24 @@
       "id": "ooFKYYGd",
       "createdAt": 1660192231947,
       "updatedAt": 1660192235674
+    },
+    {
+      "isDeleted": true,
+      "isFavorites": false,
+      "folderId": "",
+      "tagsIds": [],
+      "description": null,
+      "name": "Untitled snippet",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": ""
+        }
+      ],
+      "id": "KtBYQtP8",
+      "createdAt": 1660227876598,
+      "updatedAt": 1660227878850
     }
   ],
   "tags": []
