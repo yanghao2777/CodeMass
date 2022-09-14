@@ -178,6 +178,24 @@
       "id": "KtBYQtP8",
       "createdAt": 1660227876598,
       "updatedAt": 1660227878850
+    },
+    {
+      "isDeleted": false,
+      "isFavorites": false,
+      "folderId": "",
+      "tagsIds": [],
+      "description": null,
+      "name": "Send mail",
+      "content": [
+        {
+          "label": "Fragment 1",
+          "language": "plain_text",
+          "value": "\n   private void feedback() {\n        Uri parse = Uri.parse(\"mailto:skymani.nelson@gmail.com\");\n        PackageManager packageManager = getPackageManager();\n        List<ResolveInfo> queryIntentActivities = packageManager != null ? packageManager.queryIntentActivities(\n                new Intent(\"android.intent.action.SENDTO\", parse), 0) : null;\n        ArrayList<String> arrayList = new ArrayList<>();\n        ArrayList<Intent> arrayList2 = new ArrayList<>();\n        if (queryIntentActivities != null) {\n            int i = 0;\n            for (ResolveInfo t : queryIntentActivities) {\n                int i2 = i + 1;\n                if (i >= 0) {\n                    String str = t.activityInfo.packageName;\n                    if (!arrayList.contains(str)) {\n                        arrayList.add(str);\n                        PackageManager packageManager2 = getPackageManager();\n                        Intent launchIntentForPackage = packageManager2 != null ?\n                                packageManager2.getLaunchIntentForPackage(str) : null;\n\n                        arrayList2.add(launchIntentForPackage);\n                    }\n                    i = i2;\n                }\n            }\n        }\n        if (arrayList2.isEmpty()) {\n            ToastUtils.showShort(\"No mail app found.\");\n        } else if (Intent.createChooser(arrayList2.remove(0), \"Choose mail app\") != null) {\n            Intent intent = new Intent(\"android.intent.action.SENDTO\", parse);\n            intent.putExtra(\"android.intent.extra.EMAIL\", \"skymani.nelson@gmail.com\");\n            startActivity(Intent.createChooser(intent, \"Choose mail app\"));\n        } else {\n            ToastUtils.showShort(\"No mail app found.\");\n        }\n    }"
+        }
+      ],
+      "id": "4rDLR_mA",
+      "createdAt": 1663055911729,
+      "updatedAt": 1663055947537
     }
   ],
   "tags": []
